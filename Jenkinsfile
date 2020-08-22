@@ -3,11 +3,11 @@ pipeline {
     stages {
         stage('Upload to AWS') {
             steps {
-                withAWS(region:'af-south-1',credentials:'aws-static') {
-                    // do something
-                    
-                }           
-                s3Upload(file:'index.html', bucket:'cali-jenkins-static', path:'index.html')        
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-static', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    // some block
+                    s3Upload(file:'index.html', bucket:'cali-jenkins-static', path:'./index.html')        
+
+            }       
             }
         }
     }
