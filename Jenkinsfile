@@ -5,7 +5,8 @@ pipeline {
             steps {
                 withAWS(credentials:'aws-static') {
                     // do something
-}                   s3Upload(file:'index.html', bucket:'cali-jenkins-static', path:'.')
+                    s3Upload(file:'index.html', bucket:'cali-jenkins-static', path:'.')
+}                   
             }
         }
     }
