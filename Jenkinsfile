@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-           stage('Lint HTML') {
-                sh 'tidy -q -e *.html'
-            }
+        stage('Lint HTML') {
+            sh 'tidy -q -e *.html'
+        }
     }
     stages {
         stage('Upload to AWS') {
@@ -12,7 +12,7 @@ pipeline {
                     // some block
                     s3Upload(file:'index.html', bucket:'cali-jenkins-static')        
 
-            }       
+                }       
             }
         }
     }
